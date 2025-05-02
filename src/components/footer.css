@@ -1,0 +1,42 @@
+.footer-container {
+  background-color: #17a2b8;
+  color: white;
+  padding: 20px;
+}
+
+.footer-container h2,
+.footer-container h4 {
+  color: #343a40;
+}
+
+.footer-container p {
+  color: #343a40;
+}
+
+.footer-container .nav-link {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.footer-container .nav-link:hover {
+  color: #ffc107;
+}
+
+.footer-container .form-control {
+  margin-bottom: 10px;
+}
+
+.footer-container .btn-outline-danger {
+  width: 100%;
+}
+
+.footer-container img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.footer-container footer {
+  background-color: #f8f9fa;
+  color: #343a40;
+  padding: 10px;
+}

@@ -1,0 +1,38 @@
+.navbar {
+    background-color: lightblue;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 10px 20px;
+    margin: 10px;
+    
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.nav-link {
+    font-size: 1rem;
+    color: #333;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+.navbar {
+    
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 10px 20px;
+    margin: 10px;
+  }
+
