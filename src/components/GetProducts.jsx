@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Carousel from "./Carousel";
 import './getproducts.css';
+import { useCart } from "./CartContext";
 
 const GetProducts = () => { 
 
@@ -14,7 +15,9 @@ const GetProducts = () => {
   let[error,setError] = useState("");
   let[loading,setLoading] = useState("");
 
+
   const navigate = useNavigate();
+  const {addToCart} = useCart(); 
 
   const getproducts = async () => {
     setError("");
@@ -70,7 +73,7 @@ const GetProducts = () => {
               <p className="text-muted card-footer">{product.product_desc.slice(0,100)}</p>
               <b className="text-warning">{product.product_cost} KES</b>
               <button onClick={() => navigate("/singleproduct",{state: {product}})} className="btn btn-dark mt-2 w-100">View Details</button>
-              <button onClick={() => navigate("/cart",{state: {product}})} className="btn btn-warning mt-2 w-100"> Add to Cart</button>
+              <button onClick={() => addToCart (product)} className="btn btn-warning mt-2 w-100"> Add to Cart</button>
             </div>
         </div>
         

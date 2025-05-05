@@ -8,10 +8,10 @@ import AddProducts from './components/AddProducts';
 import Getproducts from './components/GetProducts'; 
 import SingleProduct from './components/SingleProduct';
 import Aboutus from './components/Aboutus';
-import TodoList from './components/todolist';
 import PlaceOrder from './components/PlaceOrder';
-import AddToCart from './components/AddToCart';
 import HomePage from './components/Products';
+import ChatBot from './components/ChatBot';
+import Cart from './components/Cart';
 
 
 
@@ -28,10 +28,10 @@ function App() {
             <Route path='/getproducts' element={<Getproducts/>} />
             <Route path='/singleproduct' element={<SingleProduct/>} />
             <Route path='/aboutus' element={<Aboutus/>} />
-            <Route path='/todo' element={<TodoList/>} />
             <Route path='/oders' element={<PlaceOrder/>} />
-            <Route path='/cart' element={<AddToCart/>} />
+            <Route path='/cart' element={<Cart/>} />
             <Route path='/' element={<HomePage/>} />
+            <Route path='/chatbot' element={<ChatBot/>} />
 
 
          </Routes>

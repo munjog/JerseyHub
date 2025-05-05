@@ -1,9 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "./CartContext";
 import './Navbar.css';
 
 const Navbar = () => {
   const user = JSON.parse(localStorage.getItem("user")) || null;
   const navigate = useNavigate();
+
+  const { cart } = useCart(); // ✅ corrected from Cart to cart
 
   const handleLogout = () => {
     localStorage.clear();
@@ -13,7 +16,7 @@ const Navbar = () => {
   return (
     <section className="row">
       <div className="col-md-12 my-4 mx-7">
-        <div className="navbar navbar-expand-md navbar-light ">
+        <div className="navbar navbar-expand-md navbar-light">
           <Link to="/" className="navbar-brand">
             <img src="images/download.png" alt="" width="50px" height="50px" />
           </Link>
@@ -28,6 +31,7 @@ const Navbar = () => {
               </Link>
               <Link to="AddProducts" className="nav-link">Add products</Link>
             </div>
+
             <div className="navbar-nav ms-auto">
               {user ? (
                 <>
@@ -40,9 +44,24 @@ const Navbar = () => {
                   <Link to="/signup" className="nav-link">Register</Link>
                 </>
               )}
+
               <Link to="/aboutus" className="nav-link">About us</Link>
-              <Link to="/todo" className="nav-link">to_do list</Link>
-              <Link to="/cart" className="nav-link"><img src="/images/download4.png" alt="" width="20px" height="20px"/> </Link>
+              <Link to="/ChatBot" className="nav-link">Bot</Link>
+
+              <li className="nav-item me-3 position-relative">
+                <Link to="/cart" className="nav-link position-relative">
+                  <img src="images/download (3.0).png" height="30px" alt="Cart" />
+                  {cart && cart.length > 0 && (
+                    <span
+                      className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      style={{ fontSize: "0.6rem" }}
+                    >
+                      {cart.length}
+                    </span>
+                  )}
+                </Link>
+              </li>
+
               <Link to="/oders" className="nav-link">place order</Link>
             </div>
           </div>
@@ -50,6 +69,6 @@ const Navbar = () => {
       </div>
     </section>
   );
-}
+};
 
 export default Navbar;

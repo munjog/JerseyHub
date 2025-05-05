@@ -24,7 +24,7 @@ const SingleProducts = () => {
             const data = new FormData()
             data.append("amount",product.product_cost);
             data.append("phone",phone);
-            const response = await axios.post("https://nyati25.pythonanywhere.com/api/mpesa_payment",data)
+            const response = await axios.post("https://munjogu.pythonanywhere.com/api/mpesa_payment",data)
     
             setLoading("")
             setSuccess(response.data.message)
