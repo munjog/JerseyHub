@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useCart } from "./CartContext";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import "./Cart.css";
 import axios from "axios";
 
 const Cart = () => {
@@ -36,25 +37,21 @@ const Cart = () => {
       data.append("amount", totalAmount);
       data.append("phone", phone);
 
-      // Simulate payment request
       const response = await axios.post("https://munjogu.pythonanywhere.com/api/mpesa_payment", data);
 
       setLoading("");
 
-      // Create order object
       const orderId = `ORD-${Math.floor(100000 + Math.random() * 900000)}`;
       const order = {
         id: orderId,
         phone: phone,
         total_amount: totalAmount,
         items: cart,
-        status: "Order Placed"
+        status: "Order Placed",
       };
 
-      // Save to localStorage
       localStorage.setItem(`order_${orderId}`, JSON.stringify(order));
 
-      // Clear cart
       cart.forEach((item) => removeFromCart(item.id));
 
       setSuccess(`Payment successful! Your Order ID is ${orderId}. You can now track your order.`);
@@ -74,7 +71,9 @@ const Cart = () => {
     <div>
       <Navbar />
       <div className="container mt-5 pt-5">
-        <h3 className="text-primary mb-4"> <b>YOUR CART</b> </h3>
+        <h3 className="text-primary mb-4">
+          <b>Your Cart</b>
+        </h3>
 
         {cart.length === 0 ? (
           <div className="alert alert-warning text-center">Your cart is empty</div>
@@ -82,7 +81,7 @@ const Cart = () => {
           <div className="row">
             {cart.map((product, index) => (
               <div className="col-md-4 mb-4" key={index}>
-                <div className="card shadow">
+                <div className="card shadow-sm">
                   <img
                     src={img_url + product.product_photo}
                     alt={product.product_name}
@@ -110,9 +109,12 @@ const Cart = () => {
         )}
 
         {cart.length > 0 && (
-          <button className="btn btn-primary mt-4" onClick={handleBuyNow}>
-            Buy Now
-          </button>
+          <div className="text-center mt-4">
+            <h4 className="text-success">Total: KSh {calculateTotal()}</h4>
+            <button className="btn btn-primary mt-3" onClick={handleBuyNow}>
+              Proceed to Checkout
+            </button>
+          </div>
         )}
 
         {/* Payment Modal */}
@@ -130,6 +132,8 @@ const Cart = () => {
                 </div>
                 <div className="modal-body">
                   <h4>Total: KSh {calculateTotal()}</h4>
+                  {error && <p className="text-danger">{error}</p>}
+                  {success && <p className="text-success">{success}</p>}
                   <form onSubmit={submitPayment}>
                     <div className="mb-3">
                       <label className="form-label">Enter MPesa Number (254XXXXXXXXX)</label>

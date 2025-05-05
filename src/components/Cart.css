@@ -1,0 +1,202 @@
+/* General Container */
+.container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Page Title */
+  h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007bff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Empty Cart Alert */
+  .alert {
+    font-size: 1.2rem;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+ /* Product Card */
+.card {
+    border: none;
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+  
+  .card-img-top {
+    height: 180px; /* Adjusted height */
+    object-fit: cover; /* Ensures image fits within the card */
+    border-bottom: 1px solid #ddd; /* Separator line */
+  }
+  
+  .card-body {
+    padding: 15px;
+    text-align: center; /* Center-align content */
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .text-warning {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffc107; /* Gold color for price */
+  }
+  
+  /* Buttons */
+  .card .btn {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 100%; /* Full-width buttons */
+  }
+  
+  .card .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    margin-bottom: 10px; /* Spacing between buttons */
+  }
+  
+  .card .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  .card .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .card .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .text-warning {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Buttons */
+  .btn {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Modal */
+  .modal-content {
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .modal-header {
+    border-bottom: none;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .modal-body {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .modal-body h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .modal-body .form-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .modal-body .form-control {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .modal-body .btn {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Spinner */
+  .spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: 2px;
+  }
