@@ -27,9 +27,9 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="ivy">
             <div className="navbar-nav">
               <Link to="/" className="nav-link">
-                <img src="/images/download (36).jpeg" alt="" width="20px" height="20px" /> Home
+                <img src="images/5974636.png" alt="" width="20px" height="20px" /> Home
               </Link>
-              <Link to="AddProducts" className="nav-link">Add products</Link>
+              <Link to="/AddProducts" className="nav-link">Add products</Link>
             </div>
 
             <div className="navbar-nav ms-auto">
@@ -45,22 +45,22 @@ const Navbar = () => {
                 </>
               )}
 
-              <Link to="/aboutus" className="nav-link">About us</Link>
+              <Link to="/aboutus" className="nav-link"><img src="images/681494.png" alt="" height= "20px"/>About us</Link>
               <Link to="/ChatBot" className="nav-link">Bot</Link>
 
-              <li className="nav-item me-3 position-relative">
-                <Link to="/cart" className="nav-link position-relative">
-                  <img src="images/download (3.0).png" height="30px" alt="Cart" />
-                  {cart && cart.length > 0 && (
-                    <span
-                      className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                      style={{ fontSize: "0.6rem" }}
-                    >
-                      {cart.length}
-                    </span>
-                  )}
-                </Link>
-              </li>
+                <li className="nav-item me-3 position-relative">
+                  <Link to="/cart" className="nav-link position-relative">
+                    <img src="images/download (3.0).png" height="30px" alt="Cart" />
+                    {cart && cart.length > 0 && (
+                      <span
+                        className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style={{ fontSize: "0.6rem" }}
+                      >
+                        {cart.length}
+                      </span>
+                    )}
+                  </Link>
+                </li>
 
               <Link to="/oders" className="nav-link">place order</Link>
             </div>

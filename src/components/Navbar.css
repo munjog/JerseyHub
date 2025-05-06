@@ -1,5 +1,5 @@
 .navbar {
-    background-color: lightblue;
+    background: linear-gradient(45deg,#e9eff5,#007bff,#304b4e);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 16px;

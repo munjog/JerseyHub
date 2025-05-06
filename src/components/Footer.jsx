@@ -4,7 +4,7 @@ import './footer.css';
 const Footer = () => {
   return (
      <div className="footer-container">
-          <section className="row text-white bg-info p-4">
+          <section className="row text-white  p-4">
             <h2 className="text-center">Jersey Hub</h2>
             <p className="text-center colour-dark">Be a part of the game</p>
             <div className="col-md-4">
