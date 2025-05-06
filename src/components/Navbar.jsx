@@ -29,6 +29,7 @@ const Navbar = () => {
               <Link to="/" className="nav-link">
                 <img src="images/5974636.png" alt="" width="20px" height="20px" /> Home
               </Link>
+              <Link to="/GetProducts" className="nav-link">products</Link>
               <Link to="/AddProducts" className="nav-link">Add products</Link>
             </div>
 

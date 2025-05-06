@@ -20,7 +20,7 @@ function App() {
    <Router>
        <header>
        <div className="App">
-        <img src="images/download.png" alt="" width="100px" height="100px" />
+    
          <Routes>
             <Route path='/signup' element={<Signup/>} />
             <Route path='/signin' element={<SignIn/>} />

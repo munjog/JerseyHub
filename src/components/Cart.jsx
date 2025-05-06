@@ -6,7 +6,7 @@ import "./Cart.css";
 import axios from "axios";
 
 const Cart = () => {
-  const { cart, removeFromCart } = useCart();
+  const { cart, setCart } = useCart(); // Use setCart to update the cart
   const [showModal, setShowModal] = useState(false);
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState("");
@@ -16,6 +16,16 @@ const Cart = () => {
 
   const calculateTotal = () => {
     return cart.reduce((acc, product) => acc + parseInt(product.product_cost), 0);
+  };
+
+  const removeFromCart = (productId) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === productId && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 }; // Decrease quantity if more than 1
+      }
+      return item;
+    }).filter((item) => item.quantity > 0); // Remove item if quantity is 0
+    setCart(updatedCart);
   };
 
   const submitPayment = async (e) => {
@@ -38,9 +48,9 @@ const Cart = () => {
       data.append("phone", phone);
 
       const response = await axios.post("https://munjogu.pythonanywhere.com/api/mpesa_payment", data);
-
+      
       setLoading("");
-
+      setSuccess(response.data.message);
       const orderId = `ORD-${Math.floor(100000 + Math.random() * 900000)}`;
       const order = {
         id: orderId,
@@ -52,7 +62,7 @@ const Cart = () => {
 
       localStorage.setItem(`order_${orderId}`, JSON.stringify(order));
 
-      cart.forEach((item) => removeFromCart(item.id));
+      setCart([]); // Clear the cart after successful payment
 
       setSuccess(`Payment successful! Your Order ID is ${orderId}. You can now track your order.`);
     } catch (error) {
@@ -94,6 +104,7 @@ const Cart = () => {
                       {product.product_desc.slice(0, 50)}...
                     </p>
                     <p className="text-warning fw-bold">{product.product_cost} KSh</p>
+                    <p className="text-muted">Quantity: {product.quantity}</p>
 
                     <button
                       className="btn btn-danger w-100 mb-2"
