@@ -109,18 +109,19 @@ const PlaceOrder = () => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="quantity" className="form-label">location</label>
+            <label htmlFor="text" className="form-label">Location</label>
             <input
               type="text"
               className="form-control"
-              id="quantity"
-              name="quantity"
-              value={orderDetails.quantity}
+              id="location"
+              name="location"
+              value={orderDetails.location}
               onChange={handleInputChange}
-              min="1"
               required
             />
           </div>
+
+         
           <button type="submit" className="btn btn-primary">Place Order</button>
         </form>
       </div>

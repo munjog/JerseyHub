@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { useCart } from "./CartContext";
+import { useCart } from "./CartContext"; // Import the CartContext
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import "./Cart.css";
 import axios from "axios";
 
 const Cart = () => {
-  const { cart, setCart } = useCart(); // Use setCart to update the cart
+  const { cart, removeFromCart } = useCart(); // Use the cart state and functions from context
   const [showModal, setShowModal] = useState(false);
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState("");
@@ -14,26 +13,19 @@ const Cart = () => {
   const [error, setError] = useState("");
   const img_url = "https://munjogu.pythonanywhere.com/static/images/";
 
+  // Calculate total amount
   const calculateTotal = () => {
     return cart.reduce((acc, product) => acc + parseInt(product.product_cost), 0);
   };
 
-  const removeFromCart = (productId) => {
-    const updatedCart = cart.map((item) => {
-      if (item.id === productId && item.quantity > 1) {
-        return { ...item, quantity: item.quantity - 1 }; // Decrease quantity if more than 1
-      }
-      return item;
-    }).filter((item) => item.quantity > 0); // Remove item if quantity is 0
-    setCart(updatedCart);
-  };
-
+  // Handle the payment submission
   const submitPayment = async (e) => {
     e.preventDefault();
     setLoading("Processing Payment...");
     setSuccess("");
     setError("");
 
+    // Validate phone number format
     if (!/^(254)\d{9}$/.test(phone)) {
       setError("Invalid phone number format. Please enter a valid Kenyan number.");
       setLoading("");
@@ -47,22 +39,26 @@ const Cart = () => {
       data.append("amount", totalAmount);
       data.append("phone", phone);
 
+      // Simulate payment request
       const response = await axios.post("https://munjogu.pythonanywhere.com/api/mpesa_payment", data);
-      
+
       setLoading("");
-      setSuccess(response.data.message);
+
+      // Create order object
       const orderId = `ORD-${Math.floor(100000 + Math.random() * 900000)}`;
       const order = {
         id: orderId,
         phone: phone,
         total_amount: totalAmount,
         items: cart,
-        status: "Order Placed",
+        status: "Order Placed"
       };
 
+      // Save to localStorage
       localStorage.setItem(`order_${orderId}`, JSON.stringify(order));
 
-      setCart([]); // Clear the cart after successful payment
+      // Clear cart
+      cart.forEach((item) => removeFromCart(item.cartItemId)); // Corrected here to use cartItemId
 
       setSuccess(`Payment successful! Your Order ID is ${orderId}. You can now track your order.`);
     } catch (error) {
@@ -73,6 +69,7 @@ const Cart = () => {
     }
   };
 
+  // Handle the "Buy Now" modal show
   const handleBuyNow = () => {
     setShowModal(true);
   };
@@ -81,9 +78,7 @@ const Cart = () => {
     <div>
       <Navbar />
       <div className="container mt-5 pt-5">
-        <h3 className="text-primary mb-4">
-          <b>Your Cart</b>
-        </h3>
+        <h3 className="text-primary mb-4"> <b>YOUR CART</b> </h3>
 
         {cart.length === 0 ? (
           <div className="alert alert-warning text-center">Your cart is empty</div>
@@ -91,7 +86,7 @@ const Cart = () => {
           <div className="row">
             {cart.map((product, index) => (
               <div className="col-md-4 mb-4" key={index}>
-                <div className="card shadow-sm">
+                <div className="card shadow">
                   <img
                     src={img_url + product.product_photo}
                     alt={product.product_name}
@@ -104,11 +99,11 @@ const Cart = () => {
                       {product.product_desc.slice(0, 50)}...
                     </p>
                     <p className="text-warning fw-bold">{product.product_cost} KSh</p>
-                    <p className="text-muted">Quantity: {product.quantity}</p>
 
+                    {/* Fixed remove button, now using cartItemId */}
                     <button
                       className="btn btn-danger w-100 mb-2"
-                      onClick={() => removeFromCart(product.id)}
+                      onClick={() => removeFromCart(product.cartItemId)} // Fixed to use cartItemId
                     >
                       Remove
                     </button>
@@ -120,12 +115,13 @@ const Cart = () => {
         )}
 
         {cart.length > 0 && (
-          <div className="text-center mt-4">
-            <h4 className="text-success">Total: KSh {calculateTotal()}</h4>
-            <button className="btn btn-primary mt-3" onClick={handleBuyNow}>
-              Proceed to Checkout
-            </button>
-          </div>
+         
+        <div className="text-center mt-4">
+          <h4 className="text-success">Total Ksh{calculateTotal()}</h4>
+          <button className="btn btn-primary mt-4" onClick={handleBuyNow}>
+            Buy Now
+          </button>
+        </div>
         )}
 
         {/* Payment Modal */}
@@ -134,7 +130,7 @@ const Cart = () => {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Confirm Your Order</h5>
+                  <h5 className="modal-title">Pay Via Mpesa</h5>
                   <button
                     type="button"
                     className="btn-close"
@@ -143,8 +139,6 @@ const Cart = () => {
                 </div>
                 <div className="modal-body">
                   <h4>Total: KSh {calculateTotal()}</h4>
-                  {error && <p className="text-danger">{error}</p>}
-                  {success && <p className="text-success">{success}</p>}
                   <form onSubmit={submitPayment}>
                     <div className="mb-3">
                       <label className="form-label">Enter MPesa Number (254XXXXXXXXX)</label>
@@ -168,6 +162,8 @@ const Cart = () => {
                       )}
                     </button>
                   </form>
+
+                 
                 </div>
               </div>
             </div>

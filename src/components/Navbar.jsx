@@ -51,7 +51,7 @@ const Navbar = () => {
 
                 <li className="nav-item me-3 position-relative">
                   <Link to="/cart" className="nav-link position-relative">
-                    <img src="images/download (3.0).png" height="30px" alt="Cart" />
+                    <img src="images/12373591.png" height="30px" alt="Cart" />
                     {cart && cart.length > 0 && (
                       <span
                         className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"

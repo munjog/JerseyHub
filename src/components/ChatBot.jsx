@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import './ChatBot.css';
-import Footer from './Footer';
+
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([
@@ -93,7 +93,7 @@ const ChatBot = () => {
         />
         <button type="submit" className="chatbot-send-button">Send</button>
       </form>
-      <Footer />
+ 
     </div>
   );
 };

@@ -20,10 +20,22 @@ const Carousel = () => {
               </div>
             </div>
             <div className="carousel-item">
-              <img src="images/jersey-5457103_1280 (1).jpg" alt="Football Jersey" className="d-block w-100"  />
+              <img src="images/jersey-5457103_1280 (1).jpg" alt="Football Jersey" className="d-block w-100" height="500" />
+              <div className="carousel-caption splash-text">
+                <h1 className="display-5 fw-bold splash-heading">Welcome to JerseyHub</h1>
+                <p className="lead">Get the latest jerseys and sportswear.</p>
+                <h2>Be A Part of the Game</h2>
+                <button onClick={() => navigate("/GetProducts")} className="btn btn-success mt-2 w-100">Shop Now</button>
+              </div>
             </div>
             <div className="carousel-item">
-              <img src="images/jersey-5457183_640.jpg" alt="Basketball Jersey" className="d-block w-100" />
+              <img src="images/jersey-5457183_640.jpg" alt="Basketball Jersey" className="d-block w-100" height="500" />
+              <div className="carousel-caption splash-text">
+                <h1 className="display-5 fw-bold splash-heading">Welcome to JerseyHub</h1>
+                <p className="lead">Get the latest jerseys and sportswear.</p>
+                <h2>Be A Part of the Game</h2>
+                <button onClick={() => navigate("/GetProducts")} className="btn btn-success mt-2 w-100">Shop Now</button>
+              </div>
             </div>
           </div>
 
