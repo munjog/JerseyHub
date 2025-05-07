@@ -3,6 +3,7 @@ import { useCart } from "./CartContext"; // Import the CartContext
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
+import "/Cart.css"; 
 
 const Cart = () => {
   const { cart, removeFromCart } = useCart(); // Use the cart state and functions from context
