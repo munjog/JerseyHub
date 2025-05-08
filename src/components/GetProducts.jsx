@@ -14,7 +14,7 @@ const GetProducts = () => {
   let[products, setProducts] = useState([]);
   let[error,setError] = useState("");
   let[loading,setLoading] = useState("");
-  let [filteredProducts, setFilteredProducts] = useState([]);
+  
 
 
 
@@ -40,12 +40,7 @@ const GetProducts = () => {
   },[])
   console.log(products)
 
-  const handleSearch = (value) => {
-    const filtered = products.filter((product) =>
-      product.product_name.toLowerCase().includes(value.toLowerCase())
-    );
-    setFilteredProducts(filtered);
-  };
+ 
   return ( 
 
 <div className="row">
@@ -64,23 +59,14 @@ const GetProducts = () => {
     {/* carousel */}
      <Carousel />
  
-     <div className="row justify-content-center my-4">
-        <div className="col-md-4">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search Products By Name"
-            onChange={(e) => handleSearch(e.target.value)}
-          />
-        </div>
-      </div>
+    
     
     <h3 className="mt-5 text-success">Available products</h3>
     <b className="text-success">select your jerseys</b>
     <img src="" alt="" />
     <b className="text-warning">{loading}</b>
     <b className="text-danger">{error}</b>
-    {filteredProducts.map((product)=>(
+    {products.map((product)=>(
         <div className="col-md-3 justify-content-center mb-4">
         <div className="card shadow card-margin">
               <img src={image_url+product.product_photo} alt="" className="product_img mt-4" />

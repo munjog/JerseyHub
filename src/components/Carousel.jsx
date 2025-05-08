@@ -20,7 +20,7 @@ const Carousel = () => {
               </div>
             </div>
             <div className="carousel-item">
-              <img src="images/jersey-5457103_1280 (1).jpg" alt="Football Jersey" className="d-block w-100" height="500" />
+              <img src="images/jersey-5457103_1280 (1).jpg" alt="Football Jersey" className="d-block w-100" height="350" />
               <div className="carousel-caption splash-text">
                 <h1 className="display-5 fw-bold splash-heading">Welcome to JerseyHub</h1>
                 <p className="lead">Get the latest jerseys and sportswear.</p>
